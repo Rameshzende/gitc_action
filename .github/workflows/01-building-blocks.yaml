@@ -15,9 +15,6 @@ jobs:
       
       - name: 'print the list of files in the current directory'
         run: 'ls -al'
-      
-      - name: 'print the list of files in the .github/workflows directory'
-        run: 'ls -al .github/workflows'
-      
+
       - name: 'print the end line'
         run: 'echo "End of the setup job."'
