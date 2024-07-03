@@ -1,5 +1,4 @@
-name: Workflow Events
-
+name: 02 - Workflow Events
 on: push
 
 jobs:
