@@ -1,0 +1,23 @@
+name: 01 - Building Blocks.
+
+on: [push]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 'print the current date and time'
+        run: 'date'
+      
+      - name: 'print the current working directory'
+        run: 'pwd'
+      
+      - name: 'print the list of files in the current directory'
+        run: 'ls -al'
+      
+      - name: 'print the list of files in the .github directory'
+        run: 'ls -al .github'
+      
+      - name: 'print the list of files in the .github/workflows directory'
+        run: 'ls -al .github/workflows'
