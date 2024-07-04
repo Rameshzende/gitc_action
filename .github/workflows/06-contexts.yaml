@@ -1,13 +1,19 @@
 name: 06 - Contexts 
 
-run-name: My custom workflow run name - ${{ runner.os }} 
+run-name: My custom workflow run name - ${{ inputs.tag }} 
 
 on:
   push:
   workflow_dispatch:
+    inputs:
+      debug: 
+        description: 'Tag is used to display the custom run name'
+        type: boolean
+        default: false
 
 env:
   TOP_TOKEN: ${{ vars.MY_VAR }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
