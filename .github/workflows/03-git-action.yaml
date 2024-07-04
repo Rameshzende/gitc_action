@@ -1,0 +1,16 @@
+name: Git Action
+
+on:
+    push:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: checkout repository
+              uses: actions/checkout@v4
+            
+            - name: list the folder structure
+              run: ls
+
