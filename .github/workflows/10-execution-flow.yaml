@@ -5,7 +5,7 @@ on:
         inputs:
             pass-unit-tests:
                 type: boolean
-                description: 'Whether to pass unit tests or not. Default is false.'
+                description: 'Whether to pass unit tests or not. Default is .true'
                 default: true
 
 jobs:
