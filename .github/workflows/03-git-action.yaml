@@ -14,7 +14,6 @@ jobs:
             - name: list the folder structure
               run: |
                 ls
-                PWD
             
             - name: install the node
               uses: actions/setup-node@v3
@@ -23,5 +22,5 @@ jobs:
               
             - name: install the dependencies
               run: npm cli
-              working-directory: 01-git-action/my-react
+              working-directory: 01-git-action
 
