@@ -12,5 +12,5 @@ jobs:
               uses: actions/checkout@v4
             
             - name: list the folder structure
-              run: ls
+              run: ls -R
 
