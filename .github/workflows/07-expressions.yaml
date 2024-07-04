@@ -1,6 +1,7 @@
 name: 07 - Using Expressions
 
 on: 
+    push:
     workflow_dispatch:
 jobs:
     build:
