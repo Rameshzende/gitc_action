@@ -4,6 +4,8 @@ on:
   push:
   workflow_dispatch:
 
+env:
+  TOP_TOKEN: ${{ vars.MY_VAR }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,3 +14,16 @@ jobs:
       - name: Display Context Information
         run: |
            echo 'Event name : ${{ github.event_name }}'
+           echo 'Refs name : $${{ github.ref}}'
+           echo 'Repository name : ${{ github.repository }}'
+           echo 'Actor : ${{ github.actor }}'
+           echo 'Workflow : ${{ github.workflow }}'
+    
+      - name: Retrieve Variable
+        run: |
+           echo "Retriving the Variable ${{ vars.MY_VAR}}"
+      
+      - name: Retrive the ENV details 
+        run: |
+            echo "Retive the Env Details ${{ env.TOP_TOKEN }}"
+      
