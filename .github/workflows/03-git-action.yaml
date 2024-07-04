@@ -13,4 +13,13 @@ jobs:
             
             - name: list the folder structure
               run: ls -R
+            
+            - name: install the node
+              uses: actions/setup-node@v3
+              with:
+                  node-version: '20.x'
+              
+            - name: install the dependencies
+              run: npm cli
+              working-directory: ./01-git-action/my-react
 
