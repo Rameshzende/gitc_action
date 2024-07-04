@@ -1,0 +1,16 @@
+name: 07 - Using Expressions
+
+on: 
+    workflow_dispatch:
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Test
+              if: github.event_name == 'push'
+              run: echo "I was triggered by a push event
+            
+            - name: Test 2
+              if: github.event_name == 'workflow_dispatch'
+              run: echo "I was trigger by a workflow dispathc event"
