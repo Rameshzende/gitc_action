@@ -21,6 +21,6 @@ jobs:
                   node-version: '20.x'
               
             - name: install the dependencies
-              run: npm cli
+              run: npm ci
               working-directory: 01-using-action/my-react
 
