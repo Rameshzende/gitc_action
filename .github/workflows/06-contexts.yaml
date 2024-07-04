@@ -1,6 +1,6 @@
 name: 06 - Contexts 
 
-run-name: My custom workflow run name - ${{ inputs.tag }} 
+run-name: My custom workflow run name - ${{ inputs.debug }} 
 
 on:
   push:
