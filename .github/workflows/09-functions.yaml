@@ -9,6 +9,9 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
+            - name: sleep for 10 seconds 
+              run: sleep 10
+              
             - name: failing step
               run: exit 1
             
