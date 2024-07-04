@@ -22,6 +22,6 @@ jobs:
               
             - name: install the dependencies
               run: npm cli
-              
-              working-directory: 01-git-action/my-react
+
+              working-directory: 01-using-action/my-react
 
