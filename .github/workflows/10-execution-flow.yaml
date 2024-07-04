@@ -5,7 +5,7 @@ on:
         inputs:
             pass-unit-tests:
                 type: boolean
-                description: 'Whether to pass unit tests or not. Default is .true'
+                description: 'Whether to pass unit tests or not. Default is true'
                 default: true
 
 jobs:
@@ -24,7 +24,7 @@ jobs:
               run: echo "Running tests..."
             
             - name: Failing tests
-              if: ${{ !inputs.pass-unit-tests }} == false
+              if: ${{ !inputs.pass-unit-tests }}
               run: exit 1
     
     deploy-nonprod:
