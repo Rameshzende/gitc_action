@@ -27,9 +27,9 @@ jobs:
     
     deploy:
         runs-on: ubuntu-latest
-        
+
         if: ${{ !inputs.dry-run }}
         environment: ${{ inputs.target }}
         steps:
             - name: deploy
-              run: echo "Deploying retrieve the value of the target input here"
+              run: echo "Deploying retrieve the value of the target input here  ${{ inputs.target }}"
