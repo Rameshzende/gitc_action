@@ -33,7 +33,16 @@ jobs:
               with:
                     node-version: ${{ inputs.node-verion}}
 
+            - name: Download the cache depedence
+              uses: actions/cache@v2
+              if: ${{ inputs.use-chache }}
+              id: deps-cache
+              with:
+                path: 13-caching/my-react-app/node_modules
+                key: deps-node-module-${{ hashFiles('13-caching/my-react-app/package-lock.json')}}
+
             - name: install depedences
+              if: steps.deps-cache.outputs.cache-hit != 'true'
               run: npm ci
             
             - name: testing
