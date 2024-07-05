@@ -1,0 +1,43 @@
+name: 13 - Usgin Caching
+
+on: 
+    workflow_dispatch:
+        inputs:
+            use-chache:
+                description: 'Whether to use cache or not. Default is true'
+                type: boolean
+                default: true
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        
+        defaults:
+            run:
+                working-directory: 12-caching/my-react-app
+        
+        steps:
+            - name: checkout
+              uses: actions/checkout@v4
+
+            - name: setup node
+              uses: actions/setup-node@v3
+              with:
+                    node-version: '20.x'
+
+            - name: install depedences
+              run: npm ci
+            
+            - name: testing
+              run: npm run test
+            
+            - name: building
+              run: npm run build
+
+            - name: deploying to non prod
+              run: echo "Deploying to non-prod"
+
+#1. checkout the code
+#2. Install dependencies
+#3. Build the project, unit tests, and linting
+#4. deploy to non-prod env
