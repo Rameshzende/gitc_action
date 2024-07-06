@@ -3,6 +3,10 @@ name: 14 - Working with Artifacts
 on:
     workflow_dispatch:
 
+env:
+  build-artifacts-key: my-react-app_${{ github.sha }}
+  test-artifacts-key: my-react-app_${{ github.run_id }}_test
+
 jobs:
 
     build:
@@ -30,13 +34,22 @@ jobs:
               if: steps.deps-cache.outputs.cache-hit != 'true'
               run: npm ci
             
+            - name: test the app and coverage
+              run: npm run test -- --coverage
+            
+            - name: upload the test result
+              uses: actions/upload-artifact@v3
+              with:
+                name: ${{ env.test-artifacts-key }}
+                path: 13-caching/my-react-app/coverage
+            
             - name: build the app
               run: npm run build --if-present
             
             - name: upload the build files
               uses: actions/upload-artifact@v3
               with:
-                name: my-react-app
+                name: ${{ env.build-artifacts-key }}
                 path: 13-caching/my-react-app/build
 
     deploy:
@@ -46,7 +59,7 @@ jobs:
          - name: download the artifacts
            uses: actions/download-artifact@v3
            with:
-              name: my-react-app
+              name: ${{ env.build-artifacts-key }}
               path: 13-caching/my-react-app/build
             
          - name: Show the folder strucuture
