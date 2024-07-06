@@ -2,7 +2,8 @@ const core = require('@actions/core');
 const { exec } = require('@actions/exec');
 
 const validateBranchName = ({ branchName }) => (/^[a-zA-Z0-9_\-\.\/]+$/.test(branchName))
-const validateDir = ({ dirNAme }) => (/^[a-zA-Z0-9_\-\/]+$/.test(branchName))       
+const validateDir = ({ dirName }) => (/^[a-zA-Z0-9_\-\/]+$/.test(dirName))
+       
 async function run() {
     const baseBranch = core.getInput('base-branch')
     const targeBranch = core.getInput('target-branch')
