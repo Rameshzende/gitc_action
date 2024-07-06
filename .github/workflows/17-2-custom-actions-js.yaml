@@ -1,6 +1,5 @@
 name: 17 - 2 - JS Custom Actions
-run-name: 17 - 2 - JS Custom Actions - JS | env ${{ inputs.target-env }}
-
+run-name: 17 - 2 - JS Custom Actions - JS | BB ${{ inputs.base-branch}} - TB ${{ inputs.target-branch}}  - WD ${{ inputs.working-dir}}
 on:
     workflow_dispatch:
       inputs:
