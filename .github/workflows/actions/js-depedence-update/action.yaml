@@ -24,4 +24,3 @@ inputs:
 runs:
     using: node20
     main: index.js
-    steps:
