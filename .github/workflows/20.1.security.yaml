@@ -1,0 +1,23 @@
+name : 20 workfow security 
+
+on:
+    pull_request:
+
+jobs:
+    unfair_pr:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout the code 
+              uses: actions/checkout@v4
+
+            - name: check the PR title
+              run: |
+                  title = ${{ github.event.pull_request.title }}
+                  if [[ $title == ^feat]]; then
+                  echo "This is a feature PR"
+                  exit 0
+                  else 
+                  echo "This is not a feature PR"
+                  exit 1
+                  fi
+                  
