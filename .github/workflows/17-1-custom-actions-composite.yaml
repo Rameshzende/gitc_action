@@ -1,0 +1,38 @@
+name: 17 - 1 - Custom Actions - Composite
+
+on:
+    workflow_dispatch:
+        inputs:
+            target_env:
+                type: choice
+                description: 'The target environment to deploy to'
+                options:
+                    - dev
+                    - prod
+env:
+    working-directory: 17-custom-actions/my-react
+                    
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: ${{ env.working-directory}}
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: set up node dependencies
+              uses: ./.github/workflows/actions/composite-cache-deps
+              with:
+                node-version: 20.x
+                working-dir: ${{ env.working-directory }}
+           
+            - name: Test
+              run: npm run test
+            
+
+            - name: Build
+              run: npm run build
+            
