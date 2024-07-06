@@ -10,7 +10,6 @@ jobs:
     
         steps:
             - uses: actions/checkout@v4
-
             - name: check for depedency updates
               uses: ./.github/workflows/actions/js-depedence-update
 
