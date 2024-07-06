@@ -17,7 +17,10 @@ on:
           description: The working directory for the depedence update checks
           type: string
           default: 17-custom-actions/my-react
-        
+
+permissions:
+    contents: write
+    pull-requests: write
       
 jobs:
     depedency-update:
@@ -31,4 +34,5 @@ jobs:
                 base-branch: ${{ inputs.base-branch }}
                 target-branch: ${{ inputs.target-branch }}
                 working-directory: ${{ inputs.working-dir }}
+                gh-token: ${{ secrets.GITHUB_TOKEN }}
                
