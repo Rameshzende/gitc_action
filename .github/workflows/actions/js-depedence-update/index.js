@@ -1,5 +1,5 @@
 const core = require('@actions/core');
-const { exec } = require('@actions/exec');
+const exec = require('@actions/exec');
 const github = require('@actions/github');
 
 const validateBranchName = ({ branchName }) => (/^[a-zA-Z0-9_\-\.\/]+$/.test(branchName))
@@ -39,7 +39,7 @@ async function run() {
     core.info(`Target Branch: ${targeBranch}`)
     core.info(`working directory: ${workingDir}`)
 
-    await exec('npm update', [], { ...commonExecOpts })
+    await exec.exec('npm update', [], { ...commonExecOpts })
 
     const gitStatus = await exec.getExecOutput(
         'git status -s package*.json',
