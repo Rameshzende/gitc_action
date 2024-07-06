@@ -16,7 +16,7 @@ on:
         working-dir:
           description: The working directory for the depedence update checks
           type: string
-          default: 17-2-custom-actions/my-react
+          default: 17-custom-actions/my-react
         
       
 jobs:
