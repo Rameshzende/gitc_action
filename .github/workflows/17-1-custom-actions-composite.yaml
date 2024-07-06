@@ -1,11 +1,12 @@
 name: 17 - 1 - Custom Actions - Composite
+run-name: 17 - 1 - Custom Actions - Composite | env ${{ inputs.target-env }}
 
 on:
     workflow_dispatch:
         inputs:
-            target_env:
+            target-env:
                 type: choice
-                description: 'The target environment to deploy to'
+                description: The target environment to deploy for depedency instalation
                 options:
                     - dev
                     - prod
@@ -28,6 +29,7 @@ jobs:
               with:
                 node-version: 20.x
                 working-dir: ${{ env.working-directory }}
+                target-env: ${{ inputs.target-env}}
            
             - name: Test
               run: npm run test
