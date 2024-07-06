@@ -1,0 +1,35 @@
+name: 17 - 2 - JS Custom Actions
+run-name: 17 - 2 - JS Custom Actions - JS | env ${{ inputs.target-env }}
+
+on:
+    workflow_dispatch:
+      inputs:
+        base-branch:
+          description: The branch as base branch for the depedence update checks
+          required: false
+          type: string
+          default: main
+        target-branch:
+          description: The branch as target branch for the depedence update checks
+          required: false
+          type: string
+          default: updated-depedences
+        working-dir:
+          description: The working directory for the depedence update checks
+          type: string
+          default: 17-2-custom-actions/my-react
+        
+      
+jobs:
+    depedency-update:
+        runs-on: ubuntu-latest
+    
+        steps:
+            - uses: actions/checkout@v4
+            - name: check for depedency updates
+              uses: ./.github/workflows/actions/js-depedence-update
+              with: 
+                base-branch: ${{ inputs.base-branch }}
+                target-branch: ${{ inputs.target-branch }}
+                working-directory: ${{ inputs.working-dir }}
+               

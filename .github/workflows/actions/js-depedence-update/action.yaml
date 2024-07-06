@@ -1,6 +1,26 @@
 name: update npm depedences
 description: checks if there are updated to NPM packages, and create the PR wiht the updated packages
 
+inputs:
+    base-branch:
+        description: The branch as base branch for the depedence update checks
+        required: false
+        default: main
+    target-branch:
+        description: The branch as target branch for the depedence update checks
+        required: false
+        default: updated-depedences
+    working-directory:
+        description: The working directory for the depedence update checks
+        required: true
+    gh-token:
+        description: The GitHub token to use for the PR creation, must have right acces to the repo
+        required: true
+    debug:
+        description: Enable debug mode
+        required: false
+        default: false
+
 runs:
     using: node20
     main: index.js
