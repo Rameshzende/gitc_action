@@ -1,0 +1,53 @@
+name: 14 - Working with Artifacts
+
+on:
+    workflow_dispatch:
+
+jobs:
+
+    build:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: 13-caching/my-react-app
+        steps:
+            - name: checkout the code
+              uses: actions/checkout@v4
+            
+            - name: setup node
+              uses: actions/setup-node@v3
+              with:
+                    node-version: '20.x'
+            
+            - name: Download the cache depedence
+              uses: actions/cache@v2
+              id: deps-cache
+              with:
+                path: 13-caching/my-react-app/node_modules
+                key: deps-node-module-${{ hashFiles('13-caching/my-react-app/package-lock.json')}}
+            
+            - name: install depedences
+              if: steps.deps-cache.outputs.cache-hit != 'true'
+              run: npm ci
+            
+            - name: build the app
+              run: npm rub build --if-present
+            
+            - name: upload the build files
+              uses: actions/upload-artifact@v3
+              with:
+                name: my-react-app
+                path: 13-caching/my-react-app/build
+
+    deploy:
+      runs-on: ubuntu-latest
+
+      steps:
+         - name: download the artifacts
+           uses: actions/download-artifact@v3
+           with:
+              name: my-react-app
+              path: 13-caching/my-react-app/build
+            
+         - name: Show the folder strucuture
+           run: ls -R

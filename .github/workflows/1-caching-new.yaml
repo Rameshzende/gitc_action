@@ -1,0 +1,36 @@
+name : 13 - caching
+
+on:
+    workflow_dispatch:
+        inputs:
+            use-cache:
+                description: 'Whether to use cache or not. Default is true'
+                type: boolean
+                default: true
+            node-version:
+                description: Node version to use
+                type: choice
+                options:
+                    - 18.x
+                    - 20.x
+                    - 21.x
+                default: 20.x
+
+jobs:
+    install-deps:
+        runs-on: ubuntu-latest
+
+        defaults:
+            run:
+                working-directory: 13-caching/my-react-app
+        
+        steps:
+            - name: checkout the code
+              uses: actions/checkout@v4
+            
+            - name: setup node
+              uses: actions/setup-node@v3
+              with:
+                    node-version: ${{ inputs.node-version}}
+            
+           
