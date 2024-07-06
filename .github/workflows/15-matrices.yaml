@@ -36,4 +36,4 @@ jobs:
                   sleep 10
             
             - name: upload the test result  
-              run: Uploading the test rusults
+              run: echo "Uploading the test rusults"
