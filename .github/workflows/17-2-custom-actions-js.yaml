@@ -39,6 +39,6 @@ jobs:
                 head-branch: ${{ inputs.target-branch }}
                 working-directory: ${{ inputs.working-dir }}
                 gh-token: ${{ secrets.GITHUB_TOKEN }}
-                debug: $${{ inputs.debug }}
+                debug: ${{ inputs.debug }}
 
                
