@@ -1,5 +1,6 @@
 name: 17 - 2 - JS Custom Actions
 run-name: 17 - 2 - JS Custom Actions - JS | BB ${{ inputs.base-branch}} - TB ${{ inputs.target-branch}}  - WD ${{ inputs.working-dir}}
+
 on:
     workflow_dispatch:
       inputs:
@@ -17,6 +18,9 @@ on:
           description: The working directory for the depedence update checks
           type: string
           default: 17-custom-actions/my-react
+        debug:
+          type: boolean
+          default: false
 
 permissions:
     contents: write
@@ -32,7 +36,9 @@ jobs:
               uses: ./.github/workflows/actions/js-depedence-update
               with: 
                 base-branch: ${{ inputs.base-branch }}
-                target-branch: ${{ inputs.target-branch }}
+                head-branch: ${{ inputs.target-branch }}
                 working-directory: ${{ inputs.working-dir }}
                 gh-token: ${{ secrets.GITHUB_TOKEN }}
+                debug: $${{ inputs.debug }}
+
                

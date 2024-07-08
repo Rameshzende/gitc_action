@@ -6,7 +6,7 @@ inputs:
         description: The branch as base branch for the depedence update checks
         required: false
         default: main
-    target-branch:
+    head-branch:
         description: The branch as target branch for the depedence update checks
         required: false
         default: updated-depedences

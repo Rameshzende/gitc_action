@@ -1,0 +1,17 @@
+name: 19 - 1 - Managing Concurrency
+
+on:
+    workflow_dispatch:
+
+jobs:
+    use_concurrency:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout the code 
+              uses: actions/checkout@v4
+
+            - name: run the tests 
+              run: |
+                  echo "Running the tests"
+                  sleep 10
+                  echo "Tests are done"
