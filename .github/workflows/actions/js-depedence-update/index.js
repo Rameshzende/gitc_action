@@ -80,10 +80,10 @@ async function run() {
         
         setUpGit()
         logger.debug('Comminting and Pushing the package*.json files')
-        await exec.exec(`git checkout -b ${targeBranch}`, [], { ...commonExecOpts })
+        await exec.exec(`git checkout -b ${baseBranch}`, [], { ...commonExecOpts })
         await exec.exec(`git add package.json package-lock.json`, [], { ...commonExecOpts })
         await exec.exec(`git commit -m "chore: update dependencies"`, [], { ...commonExecOpts })
-        await exec.exec(`git push -u origin ${targeBranch} --force`, [], { ...commonExecOpts })
+        await exec.exec(`git push -u origin ${headBranch} --force`, [], { ...commonExecOpts })
        
         logger.debug('fetching octokit instance and creating pull request')
         const octKit = github.getOctokit(githubToken)
@@ -93,8 +93,8 @@ async function run() {
             await octKit.pulls.create({
                 owner: github.context.repo.owner,
                 repo: github.context.repo.repo,
-                base: headBranch,
-                head: targeBranch,
+                base: baseBranch,
+                head: headBranch,
                 title: 'chore: update npm dependencies',
                 body: 'chore: this pull update npm dependencies package*.json files',
             })
