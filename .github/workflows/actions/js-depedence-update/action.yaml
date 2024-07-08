@@ -17,8 +17,7 @@ inputs:
         description: The GitHub token to use for the PR creation, must have right acces to the repo
         required: true
     debug:
-        description: Enable debug mode
-        required: false
+        description: Whether the output debug messages to the console
         default: 'false'
 
 runs:
