@@ -21,6 +21,7 @@ on:
         debug:
           type: boolean
           default: false
+          required: false
 
 permissions:
     contents: write
